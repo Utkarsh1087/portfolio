@@ -234,16 +234,16 @@ export type Experience = {
 export const EXPERIENCE: Experience[] = [
   {
     id: 1,
-    startDate: "Jan 2026",
+    startDate: "Dec 2025",
     endDate: "Present",
-    title: "Co-Founder & Full Stack Developer",
-    company: "rpar.in",
+    title: "Co-Founder",
+    company: "RPAR (Electronics Repair Marketplace)",
     description: [
-      "Spotted a real gap in the repair services market and co-founded rpar.in from scratch.",
-      "Sole technical co-founder — making all product, architecture & business decisions from day one.",
-      "Building the full stack with MERN + Next.js, designing scalable APIs and database schemas.",
-      "Owning the entire product lifecycle from wireframes to production deployments.",
-      "Running growth strategy, user acquisition and technical roadmap simultaneously.",
+      "Architected a full-stack repair marketplace covering 7+ device categories (App in internal testing).",
+      "Conducted PMF research across 20+ repair shops and synthesized findings into 3 core user personas.",
+      "Scoped and prioritized 15+ product features, reducing complexity by 40% for faster MVP release.",
+      "Configured Razorpay Live APIs, OTP authentication, webhooks, and automated refund flows.",
+      "Optimized SEO (JSON-LD, sitemap) achieving a perfect 100/100 Lighthouse SEO score.",
     ],
     skills: [
       SkillNames.NEXTJS,
@@ -261,13 +261,12 @@ export const EXPERIENCE: Experience[] = [
     startDate: "Jul 2025",
     endDate: "Dec 2025",
     title: "Full Stack Developer & Research Head",
-    company: "YesCity.in",
+    company: "YesCity (Travel Assistance Platform)",
     description: [
       "Engineered 8+ REST API routes using Next.js App Router and MongoDB, deployed on Vercel.",
-      "Set up Firebase OTP authentication with JWT sessions, cutting unauthorized access to zero post-launch.",
-      "Shipped an AI chatbot via OpenAI APIs and real-time messaging via Pusher, reducing latency by ~60%.",
-      "Designed a data schema covering 10+ city insight categories that shaped 3 core MVP decisions.",
-      "Grew from Research Intern to Research Head and Full Stack Developer in 6 months.",
+      "Set up Firebase OTP authentication and JWT sessions, eliminating unauthorized access incidents.",
+      "Shipped an AI chatbot via OpenAI APIs and real-time messaging via Pusher, cutting latency by 60%.",
+      "Designed data schemas for 10+ city insight categories which shaped core MVP decisions.",
     ],
     skills: [
       SkillNames.NEXTJS,
@@ -277,6 +276,46 @@ export const EXPERIENCE: Experience[] = [
       SkillNames.VERCEL,
       SkillNames.GIT,
     ],
+  },
+];
+
+export type Education = {
+  id: number;
+  startDate: string;
+  endDate: string;
+  degree: string;
+  institution: string;
+  location: string;
+  description: string[];
+};
+
+export const EDUCATION: Education[] = [
+  {
+    id: 1,
+    startDate: "2023",
+    endDate: "Present",
+    degree: "B.Tech (Electronics and Communication)",
+    institution: "Indian Institute of Information Technology (IIIT), Una",
+    location: "Himachal Pradesh, India",
+    description: [],
+  },
+  {
+    id: 2,
+    startDate: "2019",
+    endDate: "2021",
+    degree: "Senior Secondary (Class XII)",
+    institution: "S R Global School",
+    location: "BKT, Lucknow, Uttar Pradesh",
+    description: [],
+  },
+  {
+    id: 3,
+    startDate: "2017",
+    endDate: "2019",
+    degree: "Secondary (Class X)",
+    institution: "S R Global School",
+    location: "BKT, Lucknow, Uttar Pradesh",
+    description: [],
   },
 ];
 

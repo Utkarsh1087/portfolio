@@ -54,9 +54,9 @@ const ExperienceCard = ({
     >
       <Card
         className={cn(
-          "bg-card text-card-foreground border-border",
-          "hover:border-primary/20 transition-colors duration-300",
-          "shadow-sm hover:shadow-md"
+          "bg-zinc-950/70 text-card-foreground border-border",
+          "backdrop-blur-md hover:border-primary/20 transition-all duration-300",
+          "shadow-lg hover:shadow-2xl"
         )}
       >
         <CardHeader className="pb-3">
