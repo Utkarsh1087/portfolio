@@ -59,8 +59,12 @@ const EducationCard = ({
       <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/15 blur-[80px] rounded-full group-hover:bg-primary/25 transition-all duration-500" />
       
       <div className="relative z-10 flex flex-col h-full text-center items-center">
-        <div className="p-3 rounded-xl bg-primary/10 text-primary mb-4 group-hover:scale-110 transition-transform duration-500">
-          <GraduationCap size={24} />
+        <div className="p-1 rounded-xl bg-white/10 mb-4 group-hover:scale-110 transition-transform duration-500 overflow-hidden w-16 h-16 flex items-center justify-center">
+          <img 
+            src={education.logo} 
+            alt={education.institution} 
+            className="w-full h-full object-contain"
+          />
         </div>
         
         <h3 className="text-lg font-bold text-white group-hover:text-primary transition-colors duration-300 leading-tight mb-1">

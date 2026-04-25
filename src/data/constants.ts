@@ -286,6 +286,7 @@ export type Education = {
   degree: string;
   institution: string;
   location: string;
+  logo: string;
   description: string[];
 };
 
@@ -297,6 +298,7 @@ export const EDUCATION: Education[] = [
     degree: "B.Tech (Electronics and Communication)",
     institution: "Indian Institute of Information Technology (IIIT), Una",
     location: "Himachal Pradesh, India",
+    logo: "/education/iiitu.png",
     description: [],
   },
   {
@@ -306,6 +308,7 @@ export const EDUCATION: Education[] = [
     degree: "Senior Secondary (Class XII)",
     institution: "S R Global School",
     location: "BKT, Lucknow, Uttar Pradesh",
+    logo: "/education/srgs.png",
     description: [],
   },
   {
@@ -315,6 +318,7 @@ export const EDUCATION: Education[] = [
     degree: "Secondary (Class X)",
     institution: "S R Global School",
     location: "BKT, Lucknow, Uttar Pradesh",
+    logo: "/education/srgs.png",
     description: [],
   },
 ];
