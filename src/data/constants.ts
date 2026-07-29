@@ -234,30 +234,6 @@ export type Experience = {
 export const EXPERIENCE: Experience[] = [
   {
     id: 1,
-    startDate: "Dec 2025",
-    endDate: "Present",
-    title: "Co-Founder",
-    company: "RPAR (Electronics Repair Marketplace)",
-    description: [
-      "Architected a full-stack repair marketplace covering 7+ device categories (App in internal testing).",
-      "Conducted PMF research across 20+ repair shops and synthesized findings into 3 core user personas.",
-      "Scoped and prioritized 15+ product features, reducing complexity by 40% for faster MVP release.",
-      "Configured Razorpay Live APIs, OTP authentication, webhooks, and automated refund flows.",
-      "Optimized SEO (JSON-LD, sitemap) achieving a perfect 100/100 Lighthouse SEO score.",
-    ],
-    skills: [
-      SkillNames.NEXTJS,
-      SkillNames.REACT,
-      SkillNames.NODEJS,
-      SkillNames.EXPRESS,
-      SkillNames.MONGODB,
-      SkillNames.TAILWIND,
-      SkillNames.VERCEL,
-      SkillNames.GIT,
-    ],
-  },
-  {
-    id: 2,
     startDate: "Jul 2025",
     endDate: "Dec 2025",
     title: "Full Stack Developer & Research Head",

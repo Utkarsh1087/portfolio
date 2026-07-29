@@ -13,7 +13,6 @@ const config = {
     "Next.js",
     "React",
     "Node.js",
-    "rpar.in",
     "WebCraft",
     "Pingr",
     "Forever",
