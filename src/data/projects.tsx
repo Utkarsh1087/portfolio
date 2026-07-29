@@ -26,7 +26,6 @@ import {
   SiTypescript,
   SiVuedotjs,
   SiCodemirror,
-  SiOpenai,
   SiRedis,
   SiInfluxdb,
   SiGooglegemini,
