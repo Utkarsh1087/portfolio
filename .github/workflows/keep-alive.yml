@@ -1,0 +1,17 @@
+name: Keep Server Awake
+
+on:
+  schedule:
+    - cron: '*/10 * * * *' # Runs every 10 minutes
+  workflow_dispatch:
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Live Demo URL
+        run: |
+          URL="https://utkarshbuilds.in"
+          echo "Pinging $URL..."
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL")
+          echo "Response HTTP Status: $HTTP_STATUS"
