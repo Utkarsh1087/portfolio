@@ -1,4 +1,3 @@
-import * as React from "react"
 import { Dialog, DialogContent, DialogTrigger } from "./dialog"
 
 export const ResponsiveDialog = Dialog

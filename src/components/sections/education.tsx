@@ -1,35 +1,40 @@
 "use client";
 
 import { EDUCATION } from "@/data/constants";
-import { SectionHeader } from "./section-header";
-import { cn } from "@/lib/utils";
-import SectionWrapper from "../ui/section-wrapper";
 import { motion } from "framer-motion";
-import { GraduationCap, MapPin, Calendar } from "lucide-react";
+import { GraduationCap, MapPin } from "lucide-react";
+import Image from "next/image";
 
 const EducationSection = () => {
   return (
-    <SectionWrapper
+    <section
       id="education"
-      className="flex flex-col items-center justify-center min-h-[100vh] py-20 z-10 relative"
+      className="relative z-20 w-full min-h-screen pt-20 pb-24 md:pt-28 md:pb-36 px-6 md:px-12 bg-[#F8F8F6] dark:bg-[#0F0F0F] text-[#0F0F0F] dark:text-neutral-100 transition-colors duration-300 rounded-t-[36px] sm:rounded-t-[48px] md:rounded-t-[64px] shadow-[0_-25px_60px_-15px_rgba(0,0,0,0.35)] dark:shadow-[0_-30px_80px_-15px_rgba(0,0,0,0.9)] border-t border-neutral-300/80 dark:border-neutral-800/80"
     >
-      {/* Background Dimmer Overlay */}
-      <div className="absolute inset-0 bg-black/40 z-[-1] pointer-events-none" />
-      <div className="w-full max-w-5xl px-4 md:px-8 mx-auto">
-        <SectionHeader
-          id="education"
-          title="Education"
-          desc="Academic background and achievements."
-          className="mb-12 md:mb-20"
-        />
+      {/* Decorative Curtain Grip Indicator */}
+      <div className="flex justify-center -mt-12 sm:-mt-16 mb-12 sm:mb-16">
+        <div className="w-16 h-1.5 rounded-full bg-neutral-300 dark:bg-neutral-700/80 opacity-70" />
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
+        <div className="mb-12 md:mb-16">
+          <p className="text-xs font-semibold tracking-[0.1em] uppercase text-[#6B7280] dark:text-neutral-400 mb-3">
+            ACADEMIC BACKGROUND
+          </p>
+          <h2 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-[-0.03em] leading-[0.98] text-[#0F0F0F] dark:text-white font-sans">
+            Education
+          </h2>
+        </div>
+
+        {/* Education Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {EDUCATION.map((edu, index) => (
             <EducationCard key={edu.id} education={edu} index={index} />
           ))}
         </div>
       </div>
-    </SectionWrapper>
+    </section>
   );
 };
 
@@ -42,61 +47,58 @@ const EducationCard = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
       transition={{
         duration: 0.5,
-        delay: index * 0.2,
+        delay: index * 0.15,
+        ease: [0.215, 0.61, 0.355, 1],
       }}
       viewport={{ once: true }}
-      className={cn(
-        "group relative p-6 rounded-2xl border border-white/10 overflow-hidden",
-        "bg-zinc-950/80 backdrop-blur-md transition-all duration-500",
-        "hover:bg-zinc-900/90 hover:border-white/20 hover:shadow-[0_0_40px_rgba(0,0,0,0.5)]"
-      )}
+      className="p-6 sm:p-8 rounded-2xl bg-white/70 dark:bg-neutral-900/50 border border-[#E5E5E5] dark:border-neutral-800 shadow-sm hover:border-[#2563EB]/40 transition-all duration-300 flex flex-col justify-between group"
     >
-      {/* Decorative Background Blob - subtle */}
-      <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/15 blur-[80px] rounded-full group-hover:bg-primary/25 transition-all duration-500" />
-      
-      <div className="relative z-10 flex flex-col h-full text-center items-center">
-        <div className="mb-6 w-full h-20 flex items-center justify-center">
-          <img 
-            src={education.logo} 
-            alt={education.institution} 
-            className="w-auto h-full max-w-full object-contain filter drop-shadow-md"
-          />
+      <div>
+        <div className="flex items-center justify-between gap-4 mb-5">
+          {/* Unboxed, Big & Prominent Logo without background or border */}
+          <div className="relative h-20 sm:h-24 w-28 sm:w-32 flex-shrink-0">
+            {education.logo ? (
+              <Image
+                src={education.logo}
+                alt={education.institution}
+                fill
+                unoptimized
+                className="object-contain object-left transition-transform duration-300 group-hover:scale-105"
+              />
+            ) : (
+              <GraduationCap className="w-12 h-12 text-[#2563EB]" />
+            )}
+          </div>
+          <span className="text-[11px] sm:text-xs font-mono px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-[#6B7280] dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700">
+            {education.startDate} — {education.endDate}
+          </span>
         </div>
-        
-        <h3 className="text-lg font-bold text-white group-hover:text-primary transition-colors duration-300 leading-tight mb-1">
+
+        <h3 className="font-bold text-lg md:text-xl text-[#0F0F0F] dark:text-white group-hover:text-[#2563EB] transition-colors font-sans mb-1">
           {education.degree}
         </h3>
-        
-        <p className="text-sm font-medium text-muted-foreground mb-4">
+
+        <p className="text-sm font-semibold text-[#6B7280] dark:text-neutral-400 mb-4">
           {education.institution}
         </p>
 
-        <div className="flex flex-col gap-2 text-xs text-neutral-400 mt-auto">
-          <div className="flex items-center justify-center gap-1.5">
-            <Calendar size={12} className="text-primary/70" />
-            <span>{education.startDate} — {education.endDate}</span>
-          </div>
-          <div className="flex items-center justify-center gap-1.5 opacity-60">
-            <MapPin size={12} />
-            <span>{education.location}</span>
-          </div>
-        </div>
-
-        {education.description.length > 0 && (
-          <ul className="space-y-2 mt-4 text-left w-full border-t border-white/5 pt-4">
-            {education.description.map((point, i) => (
-              <li key={i} className="flex gap-2 text-neutral-400">
-                <div className="mt-1.5 w-1 h-1 rounded-full bg-primary/40 flex-shrink-0" />
-                <span className="text-[11px] leading-snug">{point}</span>
-              </li>
-            ))}
-          </ul>
+        {education.description && (
+          <p className="text-xs md:text-sm text-[#4B5563] dark:text-neutral-300 leading-relaxed font-normal">
+            {education.description}
+          </p>
         )}
       </div>
+
+      {education.location && (
+        <div className="flex items-center gap-1.5 text-xs text-[#6B7280] dark:text-neutral-400 pt-4 mt-4 border-t border-[#E5E5E5] dark:border-neutral-800">
+          <MapPin className="w-3.5 h-3.5 text-[#2563EB]" />
+          <span>{education.location}</span>
+        </div>
+      )}
     </motion.div>
   );
 };

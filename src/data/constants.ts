@@ -227,6 +227,9 @@ export type Experience = {
   endDate: string;
   title: string;
   company: string;
+  logo?: string;
+  linkedinUrl?: string;
+  certificateUrl?: string;
   description: string[];
   skills: SkillNames[];
 };
@@ -238,6 +241,9 @@ export const EXPERIENCE: Experience[] = [
     endDate: "Dec 2025",
     title: "Full Stack Developer & Research Head",
     company: "YesCity (Travel Assistance Platform)",
+    logo: "/experience/yescity.png",
+    linkedinUrl: "https://www.linkedin.com/company/yes-city-ltd",
+    certificateUrl: "https://drive.google.com/file/d/1_l-obrbWBw07C9CjXGVYN8w4AFUg5gzY/view?usp=sharing",
     description: [
       "Engineered 8+ REST API routes using Next.js App Router and MongoDB, deployed on Vercel.",
       "Set up Firebase OTP authentication and JWT sessions, eliminating unauthorized access incidents.",
@@ -274,7 +280,7 @@ export const EDUCATION: Education[] = [
     degree: "B.Tech (Electronics and Communication)",
     institution: "Indian Institute of Information Technology (IIIT), Una",
     location: "Himachal Pradesh, India",
-    logo: "/education/iiitu.png",
+    logo: "/education/iiitu.png?v=3",
     description: [],
   },
   {
@@ -284,7 +290,7 @@ export const EDUCATION: Education[] = [
     degree: "Senior Secondary (Class XII)",
     institution: "S R Global School",
     location: "BKT, Lucknow, Uttar Pradesh",
-    logo: "/education/srgs.png",
+    logo: "/education/srgs.png?v=3",
     description: [],
   },
   {
@@ -294,7 +300,7 @@ export const EDUCATION: Education[] = [
     degree: "Secondary (Class X)",
     institution: "S R Global School",
     location: "BKT, Lucknow, Uttar Pradesh",
-    logo: "/education/srgs.png",
+    logo: "/education/srgs.png?v=3",
     description: [],
   },
 ];

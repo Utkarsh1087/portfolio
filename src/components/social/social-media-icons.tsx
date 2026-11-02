@@ -1,7 +1,7 @@
 "use client";
 
 import { useInView } from "framer-motion";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { Button } from "../ui/button";
 import { SiGithub, SiInstagram, SiX } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";

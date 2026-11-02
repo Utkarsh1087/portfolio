@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useCallback, useRef, useContext } from 'react';
+import { useState, useEffect, useCallback, useRef, useContext } from 'react';
 import confetti from 'canvas-confetti';
 import { RadialMenuPresentational } from './radial-menu-presentational';
 import { MenuItem, Position } from './types';
@@ -131,7 +131,6 @@ export default function RadialMenu() {
 
     // Use original menu items
     const count = MENU_ITEMS.length;
-    const slice = 360 / count / 2; // Half slice for each side of the center line
 
     // Shift angle so that 0 is at -90deg (North)
     const normalizedAngle = (angle + 90) % 360;

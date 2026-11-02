@@ -17,7 +17,6 @@ export default function FunnyThemeToggle({
   const { setTheme, theme } = useTheme();
   const [counter, setCounter] = React.useState({ dark: 0, light: 0 });
   const { toast } = useToast();
-  const ref = React.useRef<HTMLButtonElement>(null);
 
   const toggleTheme = async (newTheme: string, event?: React.MouseEvent) => {
     // @ts-ignore

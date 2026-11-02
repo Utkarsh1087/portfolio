@@ -4,7 +4,7 @@ import { useMouse } from "@/hooks/use-mouse";
 import { useThrottle } from "@/hooks/use-throttle";
 import { getAvatarUrl } from "@/lib/avatar";
 import { MousePointer2 } from "lucide-react";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useMediaQuery } from "@/hooks/use-media-query";

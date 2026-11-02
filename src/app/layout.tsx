@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Archivo_Black } from "next/font/google";
+import { Inter, Archivo_Black, Lora, Outfit } from "next/font/google";
 import "./globals.css";
 import { config } from "@/data/config";
 
@@ -38,6 +38,15 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
 };
 
 const inter = Inter({
@@ -51,22 +60,46 @@ const archivoBlack = Archivo_Black({
   variable: "--font-display",
 });
 
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-lora",
+  display: "swap",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={[inter.variable, archivoBlack.variable, "font-display"].join(" ")} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={[
+        inter.variable,
+        archivoBlack.variable,
+        lora.variable,
+        outfit.variable,
+        "font-sans",
+      ].join(" ")}
+      suppressHydrationWarning
+    >
       <head>
-        <Script
-          defer
-          src={process.env.UMAMI_DOMAIN}
-          data-website-id={process.env.UMAMI_SITE_ID}
-        ></Script>
+        {process.env.UMAMI_DOMAIN && process.env.UMAMI_SITE_ID && (
+          <Script
+            defer
+            src={process.env.UMAMI_DOMAIN}
+            data-website-id={process.env.UMAMI_SITE_ID}
+          />
+        )}
         {/* <Analytics /> */}
       </head>
-      <body>
+      <body className="bg-[#F8F8F6] dark:bg-[#0F0F0F] text-[#0F0F0F] dark:text-neutral-100 antialiased min-h-screen">
         <Providers>
           <Header />
           {children}

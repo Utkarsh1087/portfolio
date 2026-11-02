@@ -36,7 +36,9 @@ export const usePreloader = () => {
   }
   return context;
 };
-const LOADING_TIME = 2.5;
+
+const LOADING_TIME = 1.3;
+
 function Preloader({ children, disabled = false }: PreloaderProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [loadingPercent, setLoadingPercent] = useState(0);
@@ -46,24 +48,27 @@ function Preloader({ children, disabled = false }: PreloaderProps) {
     loadingTween.current?.progress(0.99).kill();
     setLoadingPercent(100);
     setIsLoading(false);
-    // console.log("killed", loadingTween.current);
   };
+
   const loadingPercentRef = useRef<{ value: number }>({ value: 0 });
+
   useEffect(() => {
+    if (disabled) {
+      setIsLoading(false);
+      return;
+    }
     loadingTween.current = gsap.to(loadingPercentRef.current, {
       value: 100,
       duration: LOADING_TIME,
-      ease: "slow(0.7,0.7,false)",
+      ease: "power2.inOut",
       onUpdate: () => {
         setLoadingPercent(loadingPercentRef.current.value);
       },
       onComplete: () => {
         setIsLoading(false);
-        // observe: this change has not been observed for errors.
-        // window.scrollTo(0, 0);
       },
     });
-  }, []);
+  }, [disabled]);
 
   return (
     <preloaderContext.Provider

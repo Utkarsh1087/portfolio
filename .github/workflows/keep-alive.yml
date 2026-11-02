@@ -9,9 +9,14 @@ jobs:
   keep-alive:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping Live Demo URL
+      - name: Ping Live Site URL
         run: |
           URL="https://utkarshbuilds.in"
           echo "Pinging $URL..."
-          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$URL")
+          HTTP_STATUS=$(curl -s -L -o /dev/null -w "%{http_code}" --retry 3 --retry-delay 5 --max-time 20 "$URL")
           echo "Response HTTP Status: $HTTP_STATUS"
+          if [ "$HTTP_STATUS" -ge 400 ]; then
+            echo "::warning::Server returned status $HTTP_STATUS"
+          else
+            echo "Server is healthy and awake!"
+          fi

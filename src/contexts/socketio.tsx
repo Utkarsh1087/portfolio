@@ -1,5 +1,5 @@
 "use client";
-import React, {
+import {
   createContext,
   Dispatch,
   ReactNode,
@@ -64,7 +64,7 @@ const SocketContextProvider = ({ children }: { children: ReactNode }) => {
   const [socket, setSocket] = useState<Socket | null>(null);
   const [users, setUsers] = useState<User[]>([]);
   const [msgs, setMsgs] = useState<Message[]>([]);
-  const [isCurrentUser, setIsCurrentUser] = useState(false);
+  const [isCurrentUser] = useState(false);
   const [focusedCursorId, setFocusedCursorId] = useState<string | null>(null);
   const { toast } = useToast();
 
@@ -106,7 +106,6 @@ const SocketContextProvider = ({ children }: { children: ReactNode }) => {
       socket.disconnect();
     };
   }, []);
-  const currentUser = users.find(u => u.socketId === socket?.id);
 
   return (
     <SocketContext.Provider value={{ socket: socket, users, setUsers, msgs, isCurrentUser, focusedCursorId, setFocusedCursorId }}>

@@ -1,30 +1,31 @@
 "use client";
 
-import React from "react";
 import SmoothScroll from "@/components/smooth-scroll";
-import { cn } from "@/lib/utils";
-import AnimatedBackground from "@/components/animated-background";
-import SkillsSection from "@/components/sections/skills";
+import HeroSection from "@/components/sections/hero";
+import AboutSection from "@/components/sections/about";
+import TechStackSection from "@/components/sections/tech-stack";
+import ProjectsSection from "@/components/sections/projects";
+import ServicesScrubSection from "@/components/sections/services-scrub";
 import ExperienceSection from "@/components/sections/experience";
 import EducationSection from "@/components/sections/education";
-import ProjectsSection from "@/components/sections/projects";
 import ContactSection from "@/components/sections/contact";
-import HeroSection from "@/components/sections/hero";
 
-function MainPage() {
+export default function MainPage() {
   return (
     <SmoothScroll>
-      <AnimatedBackground />
-      <main className={cn("bg-slate-100 dark:bg-transparent canvas-overlay-mode")}>
+      <main className="min-h-screen bg-[#F8F8F6] dark:bg-[#0F0F0F] text-[#0F0F0F] dark:text-neutral-100 antialiased selection:bg-[#2563EB] selection:text-white">
         <HeroSection />
-        <SkillsSection />
-        <ExperienceSection />
-        <EducationSection />
+        <AboutSection />
+        <TechStackSection />
         <ProjectsSection />
+        <ServicesScrubSection />
+        {/* Experience to Education Curtain Transition Wrapper */}
+        <div className="relative w-full">
+          <ExperienceSection />
+          <EducationSection />
+        </div>
         <ContactSection />
       </main>
     </SmoothScroll>
   );
 }
-
-export default MainPage;

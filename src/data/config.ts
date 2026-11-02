@@ -1,7 +1,7 @@
 const config = {
   title: "Utkarsh Rajput | Full-Stack Developer",
   description: {
-    long: "Explore the portfolio of Utkarsh Rajput, a Full Stack Developer specializing in MERN stack, Next.js, real-time applications, and scalable web platforms. Discover projects like WebCraft, Forever, Pingr and more. Let's build something amazing together!",
+    long: "Explore the portfolio of Utkarsh Rajput, a Full Stack Developer specializing in MERN stack, Next.js, real-time applications, and scalable web platforms. Discover projects like Sentinel, CodeNest, WebCraft and more. Let's build something amazing together!",
     short:
       "Portfolio of Utkarsh Rajput — Full Stack Developer building scalable web apps with MERN & Next.js.",
   },
@@ -14,8 +14,8 @@ const config = {
     "React",
     "Node.js",
     "WebCraft",
-    "Pingr",
-    "Forever",
+    "Sentinel",
+    "CodeNest",
     "YesCity",
     "web development",
     "DSA",
@@ -28,6 +28,7 @@ const config = {
   author: "Utkarsh Rajput",
   email: "utkarsh.rajput.2005@gmail.com",
   site: "https://utkarsh-v1.vercel.app",
+  resume: "https://drive.google.com/file/d/1AhnRTgeW8T0AvyT35VrZo1riWcKz5gKv/view?usp=sharing",
 
   // for github stars button
   githubUsername: "Utkarsh1087",

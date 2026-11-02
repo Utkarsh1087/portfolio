@@ -25,6 +25,13 @@ const config = {
       fontFamily: {
         sans: ["var(--font-sans)", "sans-serif"],
         display: ["var(--font-display)", "sans-serif"],
+        lora: ["var(--font-lora)", "Lora", "serif"],
+        outfit: ["var(--font-outfit)", "Outfit", "sans-serif"],
+        bricolage: ["'Bricolage Grotesque'", "sans-serif"],
+        syne: ["'Syne'", "sans-serif"],
+        space: ["'Space Grotesk'", "sans-serif"],
+        jakarta: ["'Plus Jakarta Sans'", "sans-serif"],
+        urbanist: ["'Urbanist'", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

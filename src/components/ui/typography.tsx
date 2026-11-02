@@ -103,80 +103,84 @@ export function TypographyTable({
   children,
   className,
 }: {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
 }) {
   return (
     <div className={cn("my-6 w-full overflow-y-auto", className)}>
       <table className={cn("w-full")}>
-        <thead>
-          <tr className={cn("m-0 border-t p-0 even:bg-muted")}>
-            <th
-              className={cn(
-                "border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right"
-              )}
-            >
-              King&apos;s Treasury
-            </th>
-            <th
-              className={cn(
-                "border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right"
-              )}
-            >
-              People&apos;s happiness
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className={cn("m-0 border-t p-0 even:bg-muted")}>
-            <td
-              className={cn(
-                "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right"
-              )}
-            >
-              Empty
-            </td>
-            <td
-              className={cn(
-                "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right"
-              )}
-            >
-              Overflowing
-            </td>
-          </tr>
-          <tr className={cn("m-0 border-t p-0 even:bg-muted")}>
-            <td
-              className={cn(
-                "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right"
-              )}
-            >
-              Modest
-            </td>
-            <td
-              className={cn(
-                "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right"
-              )}
-            >
-              Satisfied
-            </td>
-          </tr>
-          <tr className={cn("m-0 border-t p-0 even:bg-muted")}>
-            <td
-              className={cn(
-                "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right"
-              )}
-            >
-              Full
-            </td>
-            <td
-              className={cn(
-                "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right"
-              )}
-            >
-              Ecstatic
-            </td>
-          </tr>
-        </tbody>
+        {children || (
+          <>
+            <thead>
+              <tr className={cn("m-0 border-t p-0 even:bg-muted")}>
+                <th
+                  className={cn(
+                    "border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right"
+                  )}
+                >
+                  King&apos;s Treasury
+                </th>
+                <th
+                  className={cn(
+                    "border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right"
+                  )}
+                >
+                  People&apos;s happiness
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className={cn("m-0 border-t p-0 even:bg-muted")}>
+                <td
+                  className={cn(
+                    "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right"
+                  )}
+                >
+                  Empty
+                </td>
+                <td
+                  className={cn(
+                    "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right"
+                  )}
+                >
+                  Overflowing
+                </td>
+              </tr>
+              <tr className={cn("m-0 border-t p-0 even:bg-muted")}>
+                <td
+                  className={cn(
+                    "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right"
+                  )}
+                >
+                  Modest
+                </td>
+                <td
+                  className={cn(
+                    "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right"
+                  )}
+                >
+                  Satisfied
+                </td>
+              </tr>
+              <tr className={cn("m-0 border-t p-0 even:bg-muted")}>
+                <td
+                  className={cn(
+                    "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right"
+                  )}
+                >
+                  Full
+                </td>
+                <td
+                  className={cn(
+                    "border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right"
+                  )}
+                >
+                  Ecstatic
+                </td>
+              </tr>
+            </tbody>
+          </>
+        )}
       </table>
     </div>
   );

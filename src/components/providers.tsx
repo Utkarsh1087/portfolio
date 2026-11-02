@@ -2,8 +2,7 @@ import SocketContextProvider from "@/contexts/socketio";
 import Preloader from "./preloader";
 import { ThemeProvider } from "./theme-provider";
 import { Toaster } from "./ui/toaster";
-
-import { TooltipProvider } from "./ui/tooltip";
+import { AIChatProvider } from "@/contexts/ai-chat-context";
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
   return <ThemeProvider
@@ -13,9 +12,9 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
   >
     <Preloader>
       <SocketContextProvider>
-        <TooltipProvider>
+        <AIChatProvider>
           {children}
-        </TooltipProvider>
+        </AIChatProvider>
         <Toaster />
       </SocketContextProvider>
     </Preloader>

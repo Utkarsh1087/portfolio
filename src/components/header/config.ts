@@ -4,27 +4,27 @@ const links: Link[] = [
   {
     title: "Home",
     href: "/",
-    thumbnail: "/assets/nav-link-previews/landing.png",
+    thumbnail: "/assets/nav-link-previews/landing.webp",
   },
   {
-    title: "Skills",
-    href: "/#skills",
-    thumbnail: "/assets/nav-link-previews/skills.png",
+    title: "Stack",
+    href: "/#stack",
+    thumbnail: "/assets/nav-link-previews/skills.webp",
   },
   {
     title: "Experience",
     href: "/#experience",
-    thumbnail: "/assets/nav-link-previews/contact.png",
+    thumbnail: "/assets/nav-link-previews/contact.webp",
   },
   {
     title: "Projects",
     href: "/#projects",
-    thumbnail: "/assets/nav-link-previews/projects.png",
+    thumbnail: "/assets/nav-link-previews/projects.webp",
   },
   {
     title: "Contact",
     href: "/#contact",
-    thumbnail: "/assets/nav-link-previews/contact.png",
+    thumbnail: "/assets/nav-link-previews/contact.webp",
   },
 ];
 

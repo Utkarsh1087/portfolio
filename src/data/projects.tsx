@@ -2,7 +2,6 @@ import AceTernityLogo from "@/components/logos/aceternity";
 import { Button } from "@/components/ui/button";
 import { TypographyH3, TypographyP } from "@/components/ui/typography";
 import { ArrowUpRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { RiNextjsFill, RiNodejsFill, RiReactjsFill } from "react-icons/ri";
@@ -29,11 +28,11 @@ import {
   SiRedis,
   SiInfluxdb,
   SiGooglegemini,
+  SiStripe,
+  SiK6,
 } from "react-icons/si";
 import { TbBrandFramerMotion } from "react-icons/tb";
 import { LuPencil, LuSparkles } from "react-icons/lu";
-
-const BASE_PATH = "/assets/projects-screenshots";
 
 const ProjectsLinks = ({ live, repo }: { live: string; repo?: string }) => {
   return (
@@ -264,6 +263,28 @@ const PROJECT_SKILLS = {
     fg: "white",
     icon: <SiGooglegemini />,
   },
+  stripe: {
+    title: "Stripe",
+    bg: "black",
+    fg: "white",
+    icon: <SiStripe />,
+  },
+  k6: {
+    title: "k6",
+    bg: "black",
+    fg: "white",
+    icon: <SiK6 />,
+  },
+  pinecone: {
+    title: "Pinecone",
+    bg: "black",
+    fg: "white",
+    icon: (
+      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+        <path d="M12 2L8.5 6.5h7L12 2zm-5 6.5L4 12.5h6l-3-4zm10 0l-3 4h6l-3-4zM12 11l-3.5 4.5h7L12 11zm-5 5.5L4 21h6l-3-4.5zm10 0l-3 4.5h6l-3-4.5zM12 17.5L9.5 22h5L12 17.5z" />
+      </svg>
+    ),
+  },
 };
 
 export type Project = {
@@ -283,8 +304,8 @@ const projects: Project[] = [
     id: "sentinel",
     category: "Observability Platform",
     title: "Sentinel",
-    src: "/assets/projects-screenshots/sentinel/sentinel.png",
-    screenshots: ["sentinel.png"],
+    src: "/assets/projects-screenshots/sentinel/sentinel.webp",
+    screenshots: ["sentinel.webp"],
     skills: {
       frontend: [
         PROJECT_SKILLS.react,
@@ -334,7 +355,7 @@ const projects: Project[] = [
           <p className="font-mono mb-2">
             Shipped a plug-and-play Node.js SDK that instruments any MERN app in
             3 lines, with BullMQ/Upstash Redis for background alert queues and a
-            "Liquid Glass" Recharts dashboard on the frontend.
+            &ldquo;Liquid Glass&rdquo; Recharts dashboard on the frontend.
           </p>
           <p className="font-mono mb-2 mt-4 text-center">
             Tech Stack: React · Node.js · Socket.io · InfluxDB · PostgreSQL ·
@@ -345,120 +366,167 @@ const projects: Project[] = [
     },
   },
   {
-    id: "portfolio",
-    category: "Personal Portfolio",
-    title: "Portfolio",
-    src: "/assets/projects-screenshots/portfolio/landing.png",
-    screenshots: [
-      "landing.png",
-      "navbar.png",
-      "project.png",
-      "projects.png",
-      "skills.png",
-    ],
+    id: "docsense",
+    category: "Enterprise AI RAG Platform",
+    title: "DocSense",
+    src: "/assets/projects-screenshots/docsense/docsense-v2.webp",
+    screenshots: ["docsense-v2.webp"],
     skills: {
       frontend: [
         PROJECT_SKILLS.next,
-        PROJECT_SKILLS.tailwind,
         PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.framerMotion,
-        PROJECT_SKILLS.gsap,
-        PROJECT_SKILLS.spline,
-        PROJECT_SKILLS.shadcn,
+        PROJECT_SKILLS.tailwind,
+        PROJECT_SKILLS.react,
       ],
-      backend: [PROJECT_SKILLS.node],
+      backend: [
+        PROJECT_SKILLS.gemini,
+        PROJECT_SKILLS.pinecone,
+        PROJECT_SKILLS.mongo,
+        PROJECT_SKILLS.stripe,
+        PROJECT_SKILLS.node,
+        PROJECT_SKILLS.k6,
+      ],
     },
-    live: "https://utkarsh-v1.vercel.app/",
-    github: "https://github.com/Utkarsh1087/portfolio",
+    live: "https://github.com/Utkarsh1087/DocSense",
+    github: "https://github.com/Utkarsh1087/DocSense",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            Portfolio — Modern Developer Showcase
+            DocSense — Enterprise Full-Stack AI RAG Platform
           </TypographyP>
           <TypographyP className="font-mono">
-            A premium, high-performance portfolio built with Next.js 14,
-            featuring advanced glassmorphism, 3D interactive elements, and
-            seamless page transitions.
+            Next.js 14 · Pinecone Vector DB · Gemini 1.5 Flash · Stripe SaaS · k6 Testing · 2025
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
-          <TypographyH3 className="my-4 mt-8">Interactive Design</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Ultra-Low Latency Vector Retrieval (&lt;150ms)</TypographyH3>
           <p className="font-mono mb-2">
-            Integrated Spline for 3D keyboard interactions and GSAP/Framer
-            Motion for smooth, high-fidelity animations. Implemented a "Liquid
-            Glass" aesthetic using custom Tailwind design tokens.
+            Direct Pinecone vector similarity queries with indexed user-level metadata filters, delivering semantic vector retrieval in sub-150ms. Real-time response streaming powered by Google Gemini 1.5 Flash via Server-Sent Events (SSE) with under 500ms time-to-first-token (TTFT).
           </p>
-          <TypographyH3 className="my-4 mt-8">Performance & SEO</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">3-Engine Parallel Ingestion Pipeline</TypographyH3>
           <p className="font-mono mb-2">
-            Optimized for Web Vitals with server-side rendering, dynamic
-            imports, and responsive image handling. Fully accessible and
-            SEO-friendly architecture.
+            Engineered a multi-modal document parsing pipeline (~2.5s / 10 pages) supporting Standard sequential extraction, Coordinate-based Layout-Aware paragraph reconstruction, and Table Engine with X/Y clustering for Markdown pipe table reconstruction. Embedded via 5 concurrent flight batches of 20 chunks with exponential backoff retry.
+          </p>
+          <TypographyH3 className="my-4 mt-8">High Concurrency & Scalability (500 VUs)</TypographyH3>
+          <p className="font-mono mb-2">
+            Stress-tested with Grafana k6 under sustained 500 concurrent virtual users achieving 100% check success rates. Scaled to 40,000+ pages (~100,000 vectors) with MongoDB connection pooling (maxPoolSize: 50) supporting 5,000+ registered users.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Enterprise Security & Automated SaaS Billing</TypographyH3>
+          <p className="font-mono mb-2">
+            Hardened with an SSRF defense engine blocking loopback and cloud metadata (169.254.169.254), sliding-window rate limiting (15/60 RPM), cryptographic HS256 JWT sessions, and full Stripe subscription billing ($12/mo Pro) with cryptographically verified webhooks.
           </p>
           <p className="font-mono mb-2 mt-4 text-center">
-            Crafting digital experiences with precision. ✨
+            Enterprise document intelligence at scale. ⚡
           </p>
         </div>
       );
     },
   },
   {
-    id: "codenest",
-    category: "Collaborative IDE",
-    title: "CodeNest",
-    src: "/assets/projects-screenshots/codenest/codenest.png",
-    screenshots: ["codenest.png"],
+    id: "tradeai",
+    category: "Quantitative Trading & AI Copilot",
+    title: "TradeAI",
+    src: "/assets/projects-screenshots/tradeai/tradeai-v2.webp",
+    screenshots: ["tradeai-v2.webp"],
     skills: {
       frontend: [
+        PROJECT_SKILLS.next,
         PROJECT_SKILLS.react,
-        PROJECT_SKILLS.tailwind,
         PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.codemirror,
-        PROJECT_SKILLS.tldraw,
+        PROJECT_SKILLS.tailwind,
       ],
       backend: [
+        PROJECT_SKILLS.gemini,
         PROJECT_SKILLS.node,
-        PROJECT_SKILLS.mongo,
-        PROJECT_SKILLS.sockerio,
-        PROJECT_SKILLS.openrouter,
+        PROJECT_SKILLS.python,
       ],
     },
-    live: "https://code-nest-pi-five.vercel.app/",
-    github: "https://github.com/Utkarsh1087/CodeNest",
+    live: "https://github.com/Utkarsh1087/TradeAI",
+    github: "https://github.com/Utkarsh1087/TradeAI",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            CodeNest — AI-Powered Collaborative Coding Workspace
+            TradeAI — Quantitative Trading Research &amp; AI Hypothesis Copilot
           </TypographyP>
           <TypographyP className="font-mono">
-            A high-fidelity MERN platform for real-time collaborative coding,
-            featuring a "Liquid Glass" UI, AI-driven suggestions, and
-            architectural planning tools. Shipped with Tailwind CSS v4 and
-            Socket.io.
+            Next.js 16 · React 19 · Gemini 2.5 · Groq · Zod Validation · 43-Point Security Audit
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
-          <TypographyH3 className="my-4 mt-8">
-            Real-time Collaboration
-          </TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Dual-Engine Quantitative Parsing</TypographyH3>
           <p className="font-mono mb-2">
-            Built with Socket.io for live cursor tracking and instant sync
-            across a CodeMirror editor supporting 20+ languages. One-click
-            workspace invitations for seamless onboarding.
+            Translates conversational market questions into mathematically sound, unambiguous backtesting specifications (Backtrader, VectorBT, QuantConnect). Built with a dual-engine architecture: structured LLM output with an intelligent deterministic offline parser guaranteeing zero downtime.
           </p>
-          <TypographyH3 className="my-4 mt-8">AI Copilot & Planning</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Active Disambiguation Engine</TypographyH3>
           <p className="font-mono mb-2">
-            Integrated AI Copilot via OpenRouter API with inline suggestions and
-            a chat module, plus a tldraw whiteboard for real-time architectural
-            planning.
+            Systematically parses hypotheses by distinguishing what was explicitly stated vs. assumed vs. missing. Clarifies ambiguities interactively with discrete quantitative chips and customizable overrides instead of silent parameter invention.
           </p>
-          <TypographyH3 className="my-4 mt-8">File Management</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Interactive Copilot Research Workspace</TypographyH3>
           <p className="font-mono mb-2">
-            Hierarchical file system with full CRUD persisted in MongoDB.
-            Premium "Liquid Glass" glassmorphism aesthetic implemented using
-            Tailwind CSS v4.
+            Features an interactive research SPA with word-by-word streaming suggestions, real-time parameter tuning (entry, exit, stop loss, holding horizon), and instant export to JSON and Markdown experiment specifications.
+          </p>
+          <TypographyH3 className="my-4 mt-8">43-Test Security &amp; QA Audit (100% Pass)</TypographyH3>
+          <p className="font-mono mb-2">
+            Hardened against OWASP Top 10 and LLM vulnerabilities: sliding-window rate limiting (30 req/min), anti-prompt injection sanitizers, and zero client credential leakage verified through an automated 43-point test suite.
           </p>
           <p className="font-mono mb-2 mt-4 text-center">
-            Collaborative coding, redefined. 🚀
+            Turn market intuition into testable quantitative science. 📈
+          </p>
+        </div>
+      );
+    },
+  },
+  {
+    id: "siftrole",
+    category: "AI Career Platform & ATS Pipeline",
+    title: "Siftrole",
+    src: "/assets/projects-screenshots/siftrole/siftrole-v2.webp",
+    screenshots: ["siftrole-v2.webp"],
+    skills: {
+      frontend: [
+        PROJECT_SKILLS.next,
+        PROJECT_SKILLS.react,
+        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.tailwind,
+      ],
+      backend: [
+        PROJECT_SKILLS.postgres,
+        PROJECT_SKILLS.prisma,
+        PROJECT_SKILLS.node,
+        PROJECT_SKILLS.express,
+        PROJECT_SKILLS.gemini,
+      ],
+    },
+    live: "https://siftrole-user.vercel.app",
+    github: "https://github.com/Utkarsh1087/Siftrole",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono text-2xl text-center">
+            Siftrole — Intelligent Tech Career Platform &amp; ATS Pipeline
+          </TypographyP>
+          <TypographyP className="font-mono">
+            Next.js 16 · PostgreSQL (Neon) · Prisma ORM · Dual AI Copilots · Express Microservices
+          </TypographyP>
+          <ProjectsLinks live={this.live} repo={this.github} />
+          <TypographyH3 className="my-4 mt-8">Real-Time ATS Ingestion Pipeline</TypographyH3>
+          <p className="font-mono mb-2">
+            Automated multi-source scraper and API sync engine pulling verified tech listings directly from official ATS feeds (Greenhouse, Lever, Ashby, SmartRecruiters) and direct recruiter channels, bypassing stale aggregators.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Two-Tier AI Agent Architecture</TypographyH3>
+          <p className="font-mono mb-2">
+            Engineered dual specialized agents: a candidate-facing Career Copilot with resume parsing, ATS scoring, and recruiter cold-email generation; plus an admin operations agent grounded in real-time database analytics.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Multi-Key Failover Cascade</TypographyH3>
+          <p className="font-mono mb-2">
+            Built an enterprise failover layer cascading requests across Google Gemini Flash and Groq models with dynamic rate-limit detection to maintain 100% copilot uptime.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Monorepo Multi-Service Architecture</TypographyH3>
+          <p className="font-mono mb-2">
+            Modular full-stack monorepo consisting of candidate Next.js 16 app, an administrative operations portal, and an Express.js backend worker sharing a centralized Neon serverless PostgreSQL database with Prisma ORM.
+          </p>
+          <p className="font-mono mb-2 mt-4 text-center">
+            Connecting emerging tech talent with verified roles, instantly. 🚀
           </p>
         </div>
       );
@@ -468,8 +536,8 @@ const projects: Project[] = [
     id: "webcraft",
     category: "AI SaaS Platform",
     title: "WebCraft",
-    src: "/assets/projects-screenshots/webcraft/image.png",
-    screenshots: ["image.png"],
+    src: "/assets/projects-screenshots/webcraft/webcraft-v2.webp",
+    screenshots: ["webcraft-v2.webp"],
     skills: {
       frontend: [
         PROJECT_SKILLS.react,
@@ -517,99 +585,63 @@ const projects: Project[] = [
     },
   },
   {
-    id: "forever",
-    category: "E-Commerce",
-    title: "Forever",
-    src: "/assets/projects-screenshots/forever/forever.png",
-    screenshots: ["forever.png"],
+    id: "codenest",
+    category: "Collaborative IDE",
+    title: "CodeNest",
+    src: "/assets/projects-screenshots/codenest/codenest.webp",
+    screenshots: ["codenest.webp"],
     skills: {
       frontend: [
         PROJECT_SKILLS.react,
         PROJECT_SKILLS.tailwind,
-        PROJECT_SKILLS.js,
+        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.codemirror,
+        PROJECT_SKILLS.tldraw,
       ],
       backend: [
         PROJECT_SKILLS.node,
-        PROJECT_SKILLS.express,
-        PROJECT_SKILLS.mongo,
-      ],
-    },
-    live: "https://forever-frontend-lemon-seven.vercel.app/",
-    github: "https://github.com/Utkarsh1087/ECOMMERCE_APP",
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono text-2xl text-center">
-            Forever — Premium Apparel E-Commerce Platform
-          </TypographyP>
-          <TypographyP className="font-mono">
-            A full-stack e-commerce SPA built with React (Vite), TailwindCSS,
-            Node.js / Express and MongoDB Atlas. Complete with an admin
-            dashboard, multi-variant product support, and live payment flows.
-          </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
-          <TypographyH3 className="my-4 mt-8">Admin Dashboard</TypographyH3>
-          <p className="font-mono mb-2">
-            Role-based access control, inventory management, and full product
-            CRUD with multi-variant support — all in a clean, fast interface.
-          </p>
-          <TypographyH3 className="my-4 mt-8">Payments & Auth</TypographyH3>
-          <p className="font-mono mb-2">
-            Stripe and Razorpay payment integrations, JWT-based authentication,
-            and Cloudinary image handling. Deployed on Vercel with zero downtime.
-          </p>
-          <p className="font-mono mb-2 mt-4 text-center">
-            Shopping made premium — one commit at a time. 🛍️
-          </p>
-        </div>
-      );
-    },
-  },
-  {
-    id: "pingr",
-    category: "Real-time Chat",
-    title: "Pingr",
-    src: "/assets/projects-screenshots/pingr/pingr.png",
-    screenshots: ["pingr.png"],
-    skills: {
-      frontend: [
-        PROJECT_SKILLS.react,
-        PROJECT_SKILLS.tailwind,
-        PROJECT_SKILLS.js,
-      ],
-      backend: [
-        PROJECT_SKILLS.node,
-        PROJECT_SKILLS.express,
         PROJECT_SKILLS.mongo,
         PROJECT_SKILLS.sockerio,
+        PROJECT_SKILLS.openrouter,
       ],
     },
-    live: "https://pingr-frontend-five.vercel.app/login",
-    github: "https://github.com/Utkarsh1087/Pingr",
+    live: "https://code-nest-pi-five.vercel.app/",
+    github: "https://github.com/Utkarsh1087/CodeNest",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            Pingr — Real-time Chat Application
+            CodeNest — AI-Powered Collaborative Coding Workspace
           </TypographyP>
           <TypographyP className="font-mono">
-            A full-stack MERN + Socket.io chat app with under 100ms message
-            latency, online/offline presence tracking, and rock-solid security.
+            A high-fidelity MERN platform for real-time collaborative coding,
+            featuring a &ldquo;Liquid Glass&rdquo; UI, AI-driven suggestions, and
+            architectural planning tools. Shipped with Tailwind CSS v4 and
+            Socket.io.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
-          <TypographyH3 className="my-4 mt-8">Real-time Messaging</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">
+            Real-time Collaboration
+          </TypographyH3>
           <p className="font-mono mb-2">
-            Socket.io powering sub-100ms delivery with live online / offline
-            indicators. Zustand for global state management cuts re-render
-            overhead by ~30%.
+            Built with Socket.io for live cursor tracking and instant sync
+            across a CodeMirror editor supporting 20+ languages. One-click
+            workspace invitations for seamless onboarding.
           </p>
-          <TypographyH3 className="my-4 mt-8">Security First</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">AI Copilot & Planning</TypographyH3>
           <p className="font-mono mb-2">
-            JWT sessions, bcrypt (10+ salt rounds) and HTTP-only cookies to
-            eliminate XSS token exposure. Cloudinary handles all image uploads.
+            Integrated AI Copilot via OpenRouter API with inline suggestions and
+            a chat module, plus a tldraw whiteboard for real-time architectural
+            planning.
+          </p>
+          <TypographyH3 className="my-4 mt-8">File Management</TypographyH3>
+          <p className="font-mono mb-2">
+            Hierarchical file system with full CRUD persisted in MongoDB.
+            Premium &ldquo;Liquid Glass&rdquo; glassmorphism aesthetic implemented using
+            Tailwind CSS v4.
           </p>
           <p className="font-mono mb-2 mt-4 text-center">
-            Chat fast, stay safe. 💬
+            Collaborative coding, redefined. 🚀
           </p>
         </div>
       );

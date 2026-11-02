@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import { getBlogPosts } from "@/lib/mdx";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";

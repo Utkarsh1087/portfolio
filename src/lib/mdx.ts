@@ -39,10 +39,32 @@ export function getBlogPosts() {
 }
 
 export function getBlogPost(slug: string) {
-  const filePath = path.join(process.cwd(), "src/content/blogs", `${slug}.mdx`);
-  const { data, content } = readMDXFile(filePath);
-  return {
-    metadata: data as Metadata,
-    content,
-  };
+  // Reject empty or invalid slugs (prevent path traversal like ../ or encoded characters)
+  if (!slug || !/^[a-zA-Z0-9_-]+$/.test(slug)) {
+    return null;
+  }
+
+  const blogsDir = path.join(process.cwd(), "src/content/blogs");
+  const filePath = path.join(blogsDir, `${slug}.mdx`);
+
+  // Ensure resolved path stays strictly within the blogs content directory
+  const resolvedPath = path.resolve(filePath);
+  if (!resolvedPath.startsWith(path.resolve(blogsDir))) {
+    return null;
+  }
+
+  if (!fs.existsSync(resolvedPath)) {
+    return null;
+  }
+
+  try {
+    const { data, content } = readMDXFile(resolvedPath);
+    return {
+      metadata: data as Metadata,
+      content,
+    };
+  } catch (error) {
+    console.error(`Error reading MDX post: ${slug}`, error);
+    return null;
+  }
 }

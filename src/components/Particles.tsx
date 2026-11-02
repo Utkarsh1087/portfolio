@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { useMousePosition } from "@/utils/mouse";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
@@ -60,11 +60,10 @@ export default function Particles({
   };
 
   const onMouseMove = () => {
-    if (canvasRef.current) {
-      const rect = canvasRef.current.getBoundingClientRect();
-      const { w, h } = canvasSize.current;
-      const x = mousePosition.x - rect.left - w / 2;
-      const y = mousePosition.y - rect.top - h / 2;
+    const { w, h } = canvasSize.current;
+    if (w && h) {
+      const x = mousePosition.x - w / 2;
+      const y = mousePosition.y - h / 2;
       const inside = x < w / 2 && x > -w / 2 && y < h / 2 && y > -h / 2;
       if (inside) {
         mouse.current.x = x;

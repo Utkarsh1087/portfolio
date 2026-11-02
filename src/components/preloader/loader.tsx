@@ -1,83 +1,89 @@
 "use client";
-import styles from "./style.module.scss";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { opacity, slideUp } from "./anim";
+
+import { useEffect, useRef } from "react";
+import Image from "next/image";
+import gsap from "gsap";
+import { config } from "@/data/config";
 import { usePreloader } from ".";
+import DecryptedText from "@/components/ui/decrypted-text";
 
-const steps = [
-  "10%",
-  "20%",
-  "30%",
-  "40%",
-  "50%",
-  "60%",
-  "70%",
-  "80%",
-  "90%",
-  "100%",
-];
+export default function PreloaderCurtain() {
+  const { bypassLoading } = usePreloader();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
-export default function Index() {
-  const { isLoading, loadingPercent } = usePreloader();
-  const [index, setIndex] = useState(0);
-  const [dimension, setDimension] = useState({ width: 0, height: 0 });
-
+  // Curtain lift after decryption completes
   useEffect(() => {
-    setDimension({ width: window.innerWidth, height: window.innerHeight });
-  }, []);
+    const timer = setTimeout(() => {
+      if (!containerRef.current || !contentRef.current) {
+        bypassLoading();
+        return;
+      }
 
-  useEffect(() => {
-    if (index == steps.length - 1) return;
-    setTimeout(
-      () => {
-        setIndex(index + 1);
-      },
-      index == 0 ? 1000 : 150
-    );
-  }, [index]);
+      const tl = gsap.timeline({
+        onComplete: () => {
+          bypassLoading();
+        },
+      });
 
-  const initialPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
-    dimension.height
-  } Q${dimension.width / 2} ${dimension.height + 300} 0 ${
-    dimension.height
-  }  L0 0`;
-  const targetPath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
-    dimension.height
-  } Q${dimension.width / 2} ${dimension.height} 0 ${dimension.height}  L0 0`;
+      tl.to(contentRef.current, {
+        scale: 0.9,
+        opacity: 0,
+        duration: 0.35,
+        ease: "power2.out",
+      }).to(
+        containerRef.current,
+        {
+          yPercent: -100,
+          duration: 1.1,
+          ease: "power4.inOut",
+          onStart: () => {
+            if (containerRef.current) {
+              containerRef.current.style.pointerEvents = "none";
+            }
+          },
+        },
+        "-=0.15"
+      );
+    }, 1600);
 
-  const curve = {
-    initial: {
-      d: initialPath,
-      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] },
-    },
-    exit: {
-      d: targetPath,
-      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 },
-    },
-  };
+    return () => clearTimeout(timer);
+  }, [bypassLoading]);
 
   return (
-    <motion.div
-      variants={slideUp}
-      initial="initial"
-      exit="exit"
-      className={styles.introduction}
+    <div
+      ref={containerRef}
+      className="fixed inset-0 z-[99999] bg-[#111111] text-white flex flex-col items-center justify-center select-none"
     >
-      {dimension.width > 0 && (
-        <>
-          <motion.p variants={opacity} initial="initial" animate="enter">
-            {(loadingPercent - (loadingPercent % 5)).toFixed(0)} %
-          </motion.p>
-          <svg>
-            <motion.path
-              variants={curve}
-              initial="initial"
-              exit="exit"
-            ></motion.path>
-          </svg>
-        </>
-      )}
-    </motion.div>
+      <div
+        ref={contentRef}
+        className="flex flex-col items-center justify-center gap-4 text-center px-4"
+      >
+        <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-neutral-700/80 bg-neutral-900 shadow-2xl ring-4 ring-neutral-800/40">
+          <Image
+            src="/assets/avatar.png?v=6"
+            alt={config.author}
+            fill
+            unoptimized
+            className="object-cover object-center"
+            priority
+          />
+        </div>
+        <div className="min-h-[1.75rem] flex items-center justify-center">
+          <DecryptedText
+            text="UTKARSH RAJPUT'S PORTFOLIO"
+            animateOn="view"
+            effect="scramble"
+            sequential={true}
+            revealDirection="start"
+            speed={38}
+            maxIterations={12}
+            className="text-neutral-100 font-sans font-bold tracking-[0.24em] uppercase text-xs sm:text-sm"
+            encryptedClassName="text-neutral-500 font-mono tracking-[0.24em] text-xs sm:text-sm"
+            parentClassName="inline-block"
+          />
+        </div>
+      </div>
+    </div>
   );
 }
