@@ -7,7 +7,8 @@ import { AIChatProvider } from "@/contexts/ai-chat-context";
 export const Providers = ({ children }: { children: React.ReactNode }) => {
   return <ThemeProvider
     attribute="class"
-    defaultTheme="dark"
+    defaultTheme="light"
+    enableSystem={false}
     disableTransitionOnChange
   >
     <Preloader>
